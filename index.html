@@ -1,13 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Johnglomerate</title>
+    <meta charset="utf-8">
+    <title>Johnglomerate Limited - software company, makers of General Task and HyperMule</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="John Reinstra's personal holding company.">
+    <meta name="description" content="Johnglomerate Limited is a software company building General Task and HyperMule.">
+    <style>
+        :root {
+            color-scheme: light;
+            --background: #f7f6f1;
+            --surface: #ffffff;
+            --ink: #1f2528;
+            --muted: #5f6a70;
+            --line: #d8d5ca;
+            --accent: #185a7d;
+            --accent-strong: #0f3d55;
+            --panel: #eef5f7;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--background);
+            color: var(--ink);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.55;
+        }
+
+        a {
+            color: var(--accent-strong);
+            text-decoration-thickness: 0.08em;
+            text-underline-offset: 0.18em;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .site-header {
+            border-bottom: 1px solid var(--line);
+            background: rgba(247, 246, 241, 0.92);
+        }
+
+        .nav,
+        main {
+            width: min(1060px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            min-height: 72px;
+        }
+
+        .brand {
+            font-weight: 700;
+            letter-spacing: 0;
+        }
+
+        .links {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            font-size: 0.95rem;
+        }
+
+        .hero {
+            padding: 80px 0 56px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
+            gap: 48px;
+            align-items: end;
+        }
+
+        .eyebrow {
+            margin: 0 0 16px;
+            color: var(--accent-strong);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0;
+        }
+
+        h1 {
+            max-width: 780px;
+            margin-bottom: 24px;
+            font-size: clamp(2.35rem, 8vw, 5.35rem);
+            line-height: 0.96;
+            letter-spacing: 0;
+        }
+
+        h2 {
+            margin-bottom: 18px;
+            font-size: clamp(1.65rem, 4vw, 2.6rem);
+            line-height: 1.08;
+            letter-spacing: 0;
+        }
+
+        h3 {
+            margin-bottom: 10px;
+            font-size: 1.35rem;
+            line-height: 1.18;
+            letter-spacing: 0;
+        }
+
+        .lede {
+            max-width: 660px;
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: clamp(1.08rem, 2.1vw, 1.32rem);
+        }
+
+        .facts {
+            padding: 24px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--surface);
+        }
+
+        .facts dl {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 10px 16px;
+            margin: 0;
+        }
+
+        .facts dt {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .facts dd {
+            margin: 0;
+            font-weight: 650;
+        }
+
+        .section {
+            padding: 56px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .section > p {
+            max-width: 720px;
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            margin-top: 28px;
+        }
+
+        .product {
+            display: flex;
+            min-height: 260px;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 28px;
+            padding: 28px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--surface);
+        }
+
+        .product p {
+            margin-bottom: 0;
+            color: var(--muted);
+        }
+
+        .product a {
+            align-self: flex-start;
+            font-weight: 700;
+        }
+
+        .company {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .company-item {
+            min-height: 132px;
+            padding: 24px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--panel);
+        }
+
+        .company-item span {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .company-item strong {
+            display: block;
+            font-size: 1.04rem;
+            line-height: 1.35;
+        }
+
+        @media (max-width: 760px) {
+            .nav,
+            main {
+                width: min(100% - 28px, 1060px);
+            }
+
+            .nav {
+                align-items: flex-start;
+                flex-direction: column;
+                justify-content: center;
+                padding: 16px 0;
+            }
+
+            .links {
+                justify-content: flex-start;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                padding: 48px 0 40px;
+            }
+
+            .products,
+            .company {
+                grid-template-columns: 1fr;
+            }
+
+            .product,
+            .company-item,
+            .facts {
+                padding: 22px;
+            }
+        }
+    </style>
 </head>
 <body>
-<main>
-Stay tuned!
-</main>
-</html>
+    <header class="site-header">
+        <nav class="nav" aria-label="Primary">
+            <a class="brand" href="#top" aria-label="Johnglomerate Limited home">Johnglomerate Limited</a>
+            <div class="links">
+                <a href="#about">About</a>
+                <a href="#products">Products</a>
+                <a href="#company">Company</a>
+            </div>
+        </nav>
+    </header>
 
+    <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+            <div>
+                <p class="eyebrow">Software company</p>
+                <h1 id="hero-title">Makers of General Task and HyperMule.</h1>
+                <p class="lede">Johnglomerate Limited builds focused software for planning, prioritizing, and shipping knowledge work.</p>
+            </div>
+            <aside class="facts" aria-label="Company summary">
+                <dl>
+                    <dt>Legal name</dt>
+                    <dd>Johnglomerate Limited</dd>
+                    <dt>Headquarters</dt>
+                    <dd>430 Los Altos Ave, Los Altos, CA 94022</dd>
+                    <dt>Founder</dt>
+                    <dd>John Reinstra, Founder</dd>
+                </dl>
+            </aside>
+        </section>
+
+        <section class="section" id="about" aria-labelledby="about-title">
+            <h2 id="about-title">About</h2>
+            <p>Johnglomerate Limited is a software company building General Task and HyperMule. The company focuses on tools for individuals and small software teams doing knowledge work.</p>
+        </section>
+
+        <section class="section" id="products" aria-labelledby="products-title">
+            <h2 id="products-title">Products</h2>
+            <p>Johnglomerate Limited publicly offers two products.</p>
+            <div class="products">
+                <article class="product">
+                    <div>
+                        <h3>General Task</h3>
+                        <p>General Task is a paid consumer web and mobile app for planning and prioritizing knowledge work, $2/month.</p>
+                    </div>
+                    <a href="https://generaltask.com" target="_blank" rel="noopener">Visit General Task</a>
+                </article>
+                <article class="product">
+                    <div>
+                        <h3>HyperMule</h3>
+                        <p>HyperMule is an AI-native issue tracker and agentic-coding workspace for small software teams, replacing Linear.</p>
+                    </div>
+                    <a href="https://hypermule.com" target="_blank" rel="noopener">Visit HyperMule</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="company" aria-labelledby="company-title">
+            <h2 id="company-title">Company</h2>
+            <div class="company">
+                <div class="company-item">
+                    <span>Legal entity</span>
+                    <strong>Johnglomerate Limited</strong>
+                </div>
+                <div class="company-item">
+                    <span>Headquarters</span>
+                    <strong>430 Los Altos Ave, Los Altos, CA 94022</strong>
+                </div>
+                <div class="company-item">
+                    <span>Founder</span>
+                    <strong>John Reinstra, Founder</strong>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
